@@ -21,8 +21,8 @@ public class JDBCutil {
 			Properties properties = new Properties();
 			fileInputStream = new FileInputStream("src/jdbc.properties");
 			properties.load(fileInputStream);
-			String user = properties.getProperty("user");
-			String password = properties.getProperty("password");
+			String user = System.getenv("DB_USERNAME");
+			String password = System.getenv("DB_PASSWORD");
 			String url = properties.getProperty("url");
 			connection = DriverManager.getConnection(url,user,password);
 			boolean status=!connection.isClosed();

@@ -2,13 +2,13 @@
 
 本專案為一套 Java Swing 桌面應用程式，用於管理「新北市空氣品質淨化區」資料，
 提供資料的新增、查詢、更新、刪除（CRUD）以及多格式（CSV / JSON / XML）匯入匯出功能。
-資料儲存於 MySQL 資料庫，透過 JDBC 存取。
+資料儲存於 SQL Server 資料庫，透過 JDBC 存取。
 
 技術
 
 | 項目 | 內容 |
 | GUI | Java Swing（JFrame / JMenu / JOptionPane） |
-| 資料庫 | MySQL（透過 JDBC 連線） |
+| 資料庫 | SQL Server（透過 JDBC 連線） |
 | 資料交換格式 | CSV、JSON（Jackson / Gson）、XML（DOM） |
 | 開發環境 | Eclipse（.project / .classpath） |
 
@@ -46,3 +46,17 @@
 
 5. **刪除資料**
    - 依 ID 刪除指定的空氣品質淨化區資料。
+
+## 資料庫連線設定
+
+`src/jdbc.properties` 只保留連線字串（`url`），帳號密碼改由環境變數提供，執行前請先設定：
+
+```sh
+export DB_USERNAME=你的SQL Server帳號
+export DB_PASSWORD=你的SQL Server密碼
+```
+
+或在 Eclipse/IntelliJ 的 Run Configuration 中加入這兩個環境變數。
+
+連線目標為本機 SQL Server，資料庫名稱為 `JDBCwork`
+（見 `src/jdbc.properties` 的 `url`）。
